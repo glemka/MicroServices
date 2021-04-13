@@ -1,3 +1,5 @@
+using Catalog.Api.Data;
+using Catalog.Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +27,8 @@ namespace Catalog.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.Api", Version = "v1" });
             });
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICatalogContext, CatalogContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
