@@ -51,6 +51,8 @@ namespace Catalog.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
             await this.productRepository.CreateProduct(product);
@@ -58,12 +60,15 @@ namespace Catalog.Api.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+
         public async Task<IActionResult> UpdateProduct([FromBody] Product product)
         {
             return Ok(await this.productRepository.UpdateProduct(product));
         }
 
         [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> DeleteProductById(string id)
         {
             return Ok(await this.productRepository.DeleteProduct(id));
