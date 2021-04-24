@@ -51,7 +51,7 @@ namespace Catalog.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.Created)]
 
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
@@ -60,7 +60,7 @@ namespace Catalog.Api.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
 
         public async Task<IActionResult> UpdateProduct([FromBody] Product product)
         {
