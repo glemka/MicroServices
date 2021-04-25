@@ -26,8 +26,9 @@ namespace Discount.Grpc.Services
         {
             var coupon = this.mapper.Map<Coupon>(request.Coupon);
             await this.discountRepository.CreateDiscount(coupon);
+            var createdCoupon = await this.discountRepository.GetDiscount(coupon.ProductName);
             this.logger.LogInformation("Discount is successfully created. ProductName: {ProductName}", coupon.ProductName);
-            var couponModel = this.mapper.Map<CouponModel>(coupon);
+            var couponModel = this.mapper.Map<CouponModel>(createdCoupon);
             return couponModel;
 
         }
